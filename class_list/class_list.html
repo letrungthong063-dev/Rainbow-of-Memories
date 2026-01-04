@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trang Danh Sách Lớp</title>
+
+<link rel="icon" href="/asset/favicon.ico" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#516d85",
+                        "accent": "#FFEB70",
+                        "warm-red": "#E74C3C",
+                        "soft-green": "#C1E1C1",
+                        "background-light": "#F5F4F0",
+                        "background-dark": "#17191b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"],
+                        "body": ["Inter", "Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    
+      <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-19PSC0EMZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-19PSC0EMZP');
+  </script>
+    
+    
+    
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-[#121516] min-h-screen flex flex-col overflow-x-hidden">
+<header class="w-full px-6 py-6 md:px-20 lg:px-40 flex justify-center bg-[#F5F4F0]">
+<div class="max-w-[1200px] w-full border-b border-[#d8dcdf] pb-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<a class="bg-accent p-2 rounded-lg text-primary  transition-colors" href="#">
+<span class="material-symbols-outlined !text-[28px]">school</span>
+</a>
+<h1 class="text-primary text-xl font-bold tracking-tight">Rainbow of Memories</h1>
+</div>
+<a class="hidden md:flex items-center gap-1 text-[#67747e] hover:text-primary font-medium text-sm transition-colors" href="/index.html">
+<span class="material-symbols-outlined !text-[18px]">home</span>
+                Trang chủ
+            </a>
+</div>
+</header>
+<main class="flex-grow w-full px-6 md:px-20 lg:px-40 flex flex-col items-center py-30 bg-[#F5F4F0]">
+    
+
+    <!------ nút quay lại  ------>
+    
+    
+<div class="max-w-[800px] w-full flex flex-col gap-10">
+<div class="flex justify-start">
+<a class="inline-flex items-center gap-2 text-primary hover:text-warm-red font-semibold text-sm transition-colors group" href="/index.html">
+<span class="material-symbols-outlined !text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Quay lại
+            </a>
+</div>
+    
+    
+    
+    
+    
+<section class="flex flex-col gap-4 text-center items-center max-w-2xl mx-auto pt-4">
+<div class="flex items-center justify-center gap-3 mb-1">
+<span class="material-symbols-outlined text-warm-red">groups</span>
+</div>
+<h2 class="text-[#121516] text-3xl md:text-5xl font-black leading-tight tracking-[-0.033em] relative inline-block">
+                    Danh Sách Lớp
+                    <span class="absolute -top-3 -right-5 text-accent">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"></path></svg>
+</span>
+</h2>
+<p class="text-[#516d85] text-lg font-medium leading-relaxed max-w-xl">
+                    Danh sách các thành viên của tập thể lớp. Nơi lưu giữ thông tin để chúng ta luôn tìm thấy nhau.
+                </p>
+</section>
+<section class="w-full bg-white rounded-xl shadow-sm border border-[#d8dcdf] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary/5 border-b border-[#d8dcdf] text-[#516d85]">
+<th class="p-5 font-bold text-sm uppercase tracking-wider w-16 text-center">STT</th>
+<th class="p-5 font-bold text-sm uppercase tracking-wider">Tên học sinh</th>
+<th class="p-5 font-bold text-sm uppercase tracking-wider text-right pr-8">Thông Tin</th>
+</tr>
+</thead>
+<tbody id="student-list">
+<tr class="student-row group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">01</td>
+<td class="p-5 font-semibold text-[#121516] text-lg"> Đặng Châu Anh</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/01_dang_chau_anh.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                Profile
+                                    </a>
+</td>
+</tr>
+<tr class="student-row group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">02</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Phạm Hoài Anh</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/02_pham_hoai_anh.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="student-row group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">03</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Nhật Chiến</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/03_nguyen_nhat_chien.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="student-row group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">04</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Dương Thùy Duyên</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/04_duong_thuy_duyen.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="student-row group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">05</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Đặng Anh Hào</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/05_tran_dang_anh_hao.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">06</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Ngô Thị Phương Hảo</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/06_ngo_thi_phuong_hao.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">07</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Thị Thanh Hằng</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/07_tran_thi_thanh_hang.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">08</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Huỳnh Gia Hân</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/08_huynh_gia_han.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">09</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Phan Gia Hân</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/09_phan_gia_han.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">10</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Diệu Hiền</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/10_nguyen_dieu_hien.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">11</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Thị Kim Hiếu</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/11_tran_thi_kim_hieu.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">12</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Hàng Hiếu Hoan</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/12_hang_hieu_hoan.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">13</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Văn Huy</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/13_nguyen_van_huy.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">14</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Huỳnh Quốc Huy</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/14_nguyen_huynh_quoc_huy.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">15</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Gia Huy</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/15_tran_gia_huy.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:b-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">16</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Phạm Quang Huy</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/16_pham_quang_huy.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">17</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Đặng Văn Hưng</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/17_dang_van_hung.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">18</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Hoàng Ngọc Khánh</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/18_hoang_ngoc_khanh.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">19</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Lưu Hoàng Long</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/19_nguyen_luu_hoang_long.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">20</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Đặng Khánh Ly</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/20_nguyen_dang_khanh_ly.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">21</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Hà Bùi Khánh Minh</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/21_ha_bui_khanh_minh.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">22</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Thị Cẩm My</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/22_nguyen_thi_cam_my.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">23</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Thị Kim Ngân</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/23_nguyen_thi_kim_ngan.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">24</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Huệ Nhân</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/24_tran_hue_nhan.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">25</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Phạm Lê Minh Nhật</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/25_pham_le_minh_nhat.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">26</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Phạm Ái Như</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/26_pham_ai_nhu.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">27</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Đặng Thiên Phú</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/27_dang_thien_phu.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">28</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Hoàng Quý Phước</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/28_nguyen_hoang_quy_phuoc.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">29</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Lê Tấn Sang</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/29_le_tan_sang.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">30</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Huỳnh Tấn Tài</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/30_huynh_tan_tai.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">31</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Đinh Thị Kim Tiền</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/31_dinh_thi_kim_tien.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">32</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Hà Đức Tiến</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/32_ha_duc_tien.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">33</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Huỳnh Nhật Tin</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/33_huynh_nhat_tin.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">34</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Lê Bích Tuyên</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/34_nguyen_le_bich_tuyen.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">35</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Đặng Gia Tường</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/35_dang_gia_tuong.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">36</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trương Đăng Thắng</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/36_truong_dang_thang.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">37</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Lê Trung Thân</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/37_le_trung_than.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">38</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Minh Thiện</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/38_nguyen_minh_thien.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">39</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Lê Trung Thông</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/39_le_trung_thong.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">40</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Trần Anh Thư</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/40_tran_anh_thu.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">41</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Thị Thanh Trang</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/41_nguyen_thi_thanh_trang.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">42</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Ngô Thị Thanh Trúc</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/42_ngo_thi_thanh_truc.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">43</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Nguyễn Xuân Vy</td>
+<td class="p-5 text-right">
+<a href="/class_list/students/43_nguyen_xuan_vy.html" class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+<tr class="hidden-row hidden group hover:bg-[#F5F4F0] transition-colors border-b border-[#f0f0f0] last:border-0">
+<td class="p-5 text-center font-medium text-[#67747e]">44</td>
+<td class="p-5 font-semibold text-[#121516] text-lg">Đặng Hoàng Gia Uy</td>
+<td class="p-5 text-right">
+<a href= "/class_list/students/44_nguyen_hoang_gia_uy.html"class="bg-primary hover:bg-warm-red text-white text-sm font-medium px-4 py-2 rounded transition-colors inline-flex items-center gap-1">
+                                        Profile
+                                    </a>
+</td>
+</tr>
+
+
+
+<!--- muốn thêm tên thì thêm thẻ tr---->
+
+
+
+</tbody>
+</table>
+</div>
+</section>
+<div class="flex justify-center w-full">
+<button class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md" id="toggleBtn" onclick="toggleRows()">
+<span id="btnText">Xem thêm</span>
+<span class="material-symbols-outlined !text-[20px] group-hover:translate-y-1 transition-transform" id="btnIcon">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+<div class=" mt-10">
+</div>
+<footer class="w-full py-1 flex justify-center border-t border-[#d8dcdf] mt-auto bg-[#F5F4F0]">
+    <p class="text-[#67747e] text-xs flex items-center gap-1">
+        © 2026 Memory | Yahub | <a href="mailto:letrungthong063@gmail.com?subject=Liên hệ&body=Xin chào yahub">
+            Liên hệ
+        </a>
+    </p>
+</footer>
+<script>
+        function toggleRows() {
+            const hiddenRows = document.querySelectorAll('.hidden-row');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            let isHidden = true;
+            hiddenRows.forEach(row => {
+                if (row.classList.contains('hidden')) {
+                    row.classList.remove('hidden');
+                    isHidden = false;
+                } else {
+                    row.classList.add('hidden');
+                    isHidden = true;
+                }
+            });
+            if (!isHidden) {
+                btnText.textContent = "Thu gọn";
+                btnIcon.textContent = "expand_less";
+                btnIcon.classList.remove('group-hover:translate-y-1');
+                btnIcon.classList.add('group-hover:-translate-y-1');
+            } else {
+                btnText.textContent = "Xem thêm";
+                btnIcon.textContent = "expand_more";
+                btnIcon.classList.remove('group-hover:-translate-y-1');
+                btnIcon.classList.add('group-hover:translate-y-1');
+            }
+        }
+    </script>
+
+</body></html>
